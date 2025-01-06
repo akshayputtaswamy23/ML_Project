@@ -13,19 +13,7 @@ from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object, evaluate_model
 
-# Define xgb_regressor_tags outside of any function
-def xgb_regressor_tags():
-    return {
-        "estimator_type": "regressor",
-        "requires_positive_y": False,
-        "X_types": ["2darray"],
-        "allow_nan": True,
-        "preserves_dtype": [np.float64, np.float32],
-        "multioutput": True,
-    }
 
-# Patch the XGBRegressor class once, before the ModelTrainer class
-XGBRegressor.__sklearn_tags__ = xgb_regressor_tags
 
 @dataclass
 class ModelTrainerConfig:
